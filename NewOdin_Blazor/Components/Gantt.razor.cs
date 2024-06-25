@@ -10,6 +10,7 @@ namespace NewOdin_Blazor.Components
 		public required IJSRuntime JS { get; set; }
 
 		private IJSObjectReference? ganttModule;
+		private ElementReference? ganttContainer;
 
 		protected override async Task OnAfterRenderAsync(bool firstRender)
 		{
@@ -22,7 +23,7 @@ namespace NewOdin_Blazor.Components
 
 		public void InitGantt()
 		{
-			ganttModule?.InvokeVoidAsync("initGantt");
+			ganttModule?.InvokeVoidAsync("initGantt", ganttContainer);
 		}
 
 		public void LoadGanttData(string dataUrl)

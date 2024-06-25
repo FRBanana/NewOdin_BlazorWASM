@@ -1,7 +1,5 @@
-﻿const ganttContainerId = "gantt-container"
-
-export function initGantt() {
-    gantt.init(ganttContainerId);
+﻿export function initGantt(ganttContainer) {
+    gantt.init(ganttContainer);
     console.log("Gantt initialized.")
 }
 
