@@ -1,21 +1,21 @@
 ﻿import * as templates from "./templates.js";
 
-export function initGantt() {
+export function initGantt(ganttData) {
     console.log("hello")
 
 	initGanttLayout(gantt);
 	initGanttLightBox(gantt);
 
     gantt.init("gantt_here");
-	loadData();
+	loadData(ganttData);
 
 	console.log("LICENSE: " + gantt.license);
 }
 
-function loadData() {
-	var apiURL = "https://192.168.211.48:9094/swagger/index.html";
+function loadData(ganttData) {
+	//var apiURL = "https://192.168.211.48:9095/api/order/get-all";
 
-	gantt.load(apiURL);
+	gantt.load(ganttData);
 }
 
 function initGanttLayout(gantt) {
