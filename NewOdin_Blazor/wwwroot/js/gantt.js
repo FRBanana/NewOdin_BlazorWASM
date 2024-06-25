@@ -6,10 +6,38 @@ export function initGantt(ganttData) {
 	initGanttLayout(gantt);
 	initGanttLightBox(gantt);
 
+	initGanttCRUD(gantt);
+
     gantt.init("gantt_here");
 	loadData(ganttData);
 
+	var dp = new gantt.dataProcessor("/api/order");
+	dp.init(gantt);
+	dp.setTransactionMode("REST");
+
 	console.log("LICENSE: " + gantt.license);
+}
+
+function initGanttCRUD(gantt) {
+	gantt.attachEvent("onTaskAdded", function (id, task) {
+		sendData(task);
+	});
+
+	gantt.attachEvent("onTaskUpdated", function (id, task) {
+		sendData(task);
+	});
+
+	gantt.attachEvent("onTaskDeleted", function (id) {
+		deleteData(id);
+	});
+
+	gantt.attachEvent("onLinkAdded", function (id, link) {
+		sendLinkData(link);
+	});
+
+	gantt.attachEvent("onLinkDeleted", function (id) {
+		deleteLinkData(id);
+	});
 }
 
 function loadData(ganttData) {

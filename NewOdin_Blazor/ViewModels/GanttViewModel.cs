@@ -23,5 +23,10 @@ namespace NewOdin_Blazor.ViewModels
 
             await _jsRuntime.InvokeVoidAsync("initGantt", ganttData);
         }
+
+        public async Task SaveGanttDataAsync()
+        {
+            await _jsRuntime.InvokeVoidAsync("saveGanttData");
+        }
     }
 }
