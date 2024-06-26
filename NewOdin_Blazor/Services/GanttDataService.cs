@@ -9,7 +9,7 @@ namespace NewOdin_Blazor.Services
         public string LoadGanttDataFromApi()
         {
             // Mock data representing the response from the API
-            string apiURL = "https://192.168.211.48:9095/api/order/get-all";
+            string apiURL = "https://192.168.211.48:9095/api/gantt/get-data";
 
             return apiURL;
         }
