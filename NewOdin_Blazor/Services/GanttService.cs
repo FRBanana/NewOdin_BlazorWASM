@@ -1,11 +1,10 @@
 ﻿
 using NewOdin_Blazor.Models;
 using NewOdin_Blazor.Services.Base;
-using NewOdin_Blazor.Services.Interface;
 
 namespace NewOdin_Blazor.Services
 {
-    public class GanttService : BaseApiService, IGanttService
+    public class GanttService : BaseApiService
     {
         private readonly ApiConfig _apiConfig;
 
