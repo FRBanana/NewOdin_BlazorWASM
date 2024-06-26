@@ -1,4 +1,4 @@
-﻿namespace NewOdin_Blazor.Services.API
+﻿namespace NewOdin_Blazor.Services.Base
 {
 	public class ApiConfig
 	{

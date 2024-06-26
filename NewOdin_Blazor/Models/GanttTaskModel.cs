@@ -2,7 +2,7 @@
 
 namespace NewOdin_Blazor.Models
 {
-	public class DHXGanttTask
+	public class GanttTaskModel
 	{
 		[JsonPropertyName("id")]
 		public int Id { get; set; }
