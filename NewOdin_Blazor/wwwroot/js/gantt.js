@@ -3,6 +3,8 @@
 export function initGantt(ganttData) {
     console.log("hello")
 
+	gantt.config.date_format = "%Y-%m-%d %H:%i:%s"; // Set the desired date format
+
 	initGanttLayout(gantt);
 	initGanttLightBox(gantt);
 
