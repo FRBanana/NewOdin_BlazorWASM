@@ -13,12 +13,23 @@
         if (firstRender)
         {
             ganttModule = await JS.InvokeAsync<IJSObjectReference>("import", "./js/component/gantt.js");
+            await InitGanttAsync();
+        }
+    }
+
+    public async Task InitGanttAsync()
+    {
+        if (ganttModule is not null)
+        {
             await ganttModule.InvokeVoidAsync("initGantt", ganttContainer);
         }
     }
 
     public async Task DisplayDataAsync(GanttDataModel ganttData)
     {
-        await ganttModule.InvokeVoidAsync("loadGanttData", ganttData);
+        if (ganttModule is not null)
+        {
+            await ganttModule.InvokeVoidAsync("loadGanttData", ganttData);
+        }
     }
 }
