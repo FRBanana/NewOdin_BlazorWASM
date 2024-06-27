@@ -1,8 +1,5 @@
 ﻿@page "/gantt"
-
 @using NewOdin_Blazor.Components;
-@using NewOdin_Blazor.ViewModels
-@inject GanttViewModel GanttViewModel
 
 <PageTitle>Gantt</PageTitle>
 
@@ -14,20 +11,6 @@
 		<div class="home-button-con">
 			<button @onclick="DisplayGantt" class="btn btn-primary">Display</button>
 		</div>
-	</div>	
-	<Gantt @ref="ganttComponent"></Gantt>
+	</div>
+    <GanttComponent @ref="ganttComponent"></GanttComponent>
 </div>
-
-@code
-{
-    private Gantt? ganttComponent;
-
-    private async void DisplayGantt()
-    {
-        if (ganttComponent is not null)
-        {
-            var ganttData = await GanttViewModel.GetGanttDataAsync();
-            await ganttComponent.DisplayDataAsync(ganttData);
-        }
-    }
-}
