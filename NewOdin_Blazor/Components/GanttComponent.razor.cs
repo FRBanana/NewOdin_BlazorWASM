@@ -37,5 +37,28 @@ namespace NewOdin_Blazor.Components
                 await ganttModule.InvokeVoidAsync("loadGanttData", ganttData);
             }
         }
+
+        public async Task<List<GanttTaskModel>> AddDataAsync()
+        {
+            var updatedTasks = await ganttModule.InvokeAsync<List<GanttTaskModel>>("getAddedTasks");
+            return updatedTasks;
+        }
+
+        public async Task<List<GanttTaskModel>> UpdateDataAsync()
+        {
+            var updatedTasks = await ganttModule.InvokeAsync<List<GanttTaskModel>>("getUpdatedTasks");
+            return updatedTasks;
+        }
+        public async Task<List<int>> DeleteDataAsync()
+        {
+            var updatedTasks = await ganttModule.InvokeAsync<List<int>>("getDeletedTasks");
+            return updatedTasks;
+        }
+
+        public async Task<List<GanttTaskModel>> ShowTaskDataAsync()
+        {
+            var updatedTasks = await ganttModule.InvokeAsync<List<GanttTaskModel>>("getUpdatedTasks");
+            return updatedTasks;
+        }
     }
 }

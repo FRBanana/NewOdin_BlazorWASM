@@ -1,4 +1,6 @@
 ﻿using System.Net.Http.Json;
+using System.Text.Json;
+using System.Text;
 
 namespace NewOdin_Blazor.Services.Base
 {
@@ -71,11 +73,22 @@ namespace NewOdin_Blazor.Services.Base
 			return result;
 		}
 
-		// Generic method to DELETE data from an API endpoint
-		protected async Task DeleteAsync(string uri)
-		{
-			var response = await _httpClient.DeleteAsync(uri);
-			response.EnsureSuccessStatusCode();
-		}
-	}
+        // Generic method to DELETE data from an API endpoint
+        protected async Task<TResponse> DeleteAsync<TRequest, TResponse>(string uri, TRequest data)
+        {
+            var json = JsonSerializer.Serialize(data);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.SendAsync(new HttpRequestMessage(HttpMethod.Delete, uri) { Content = content });
+            response.EnsureSuccessStatusCode();
+
+            var result = await response.Content.ReadFromJsonAsync<TResponse>();
+            if (result == null)
+            {
+                throw new ApplicationException($"The response from {uri} was null.");
+            }
+
+            return result;
+        }
+    }
 }

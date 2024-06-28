@@ -1,4 +1,7 @@
 ﻿{
   "BaseUrl": "http://192.168.211.48:9094/api",
-  "GanttDataEndpoint": "/gantt/get-data"
+  "GanttDataEndpoint": "/gantt/get-data",
+  "InsertGanttDataEndpoint": "/gantt/insert-tasks",
+  "UpdateGanttDataEndpoint": "/gantt/update-tasks",
+  "DeleteGanttDataEndpoint": "/gantt/delete-tasks"
 }
